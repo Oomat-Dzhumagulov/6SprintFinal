@@ -1,13 +1,14 @@
 package handlers
 
 import (
-	"6sprintFinal/internal/service"
 	"fmt"
 	"io"
 	"net/http"
 	"os"
 	"path/filepath"
 	"time"
+
+	"github.com/Oomat-Dzhumagulov/6SprintFinal/internal/service"
 )
 
 func MainHandle(w http.ResponseWriter, r *http.Request) {
@@ -22,7 +23,7 @@ func UploadHandle(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	file, header, err := r.FormFile("viewport")
+	file, header, err := r.FormFile("myFile")
 	if err != nil {
 		http.Error(w, "Ошибка при получении формы", http.StatusInternalServerError)
 		return
@@ -39,7 +40,7 @@ func UploadHandle(w http.ResponseWriter, r *http.Request) {
 
 	extFile := filepath.Ext(header.Filename)
 
-	fileName := fmt.Sprintf("JamesBond_%s%s", time.Now().Format("2006.01.02 15:04:05"), extFile)
+	fileName := fmt.Sprintf("JamesBond_%s%s", time.Now().Format("2006-01-02_15-04-05"), extFile)
 
 	JamesBond, err := os.Create(fileName)
 	if err != nil {

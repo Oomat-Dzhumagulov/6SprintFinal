@@ -1,9 +1,10 @@
 package main
 
 import (
-	"6sprintFinal/internal/server"
 	"log"
 	"os"
+
+	"github.com/Oomat-Dzhumagulov/6SprintFinal/internal/server"
 )
 
 func main() {

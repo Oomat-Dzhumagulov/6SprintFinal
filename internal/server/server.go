@@ -1,10 +1,11 @@
 package server
 
 import (
-	"6sprintFinal/internal/handlers"
 	"log"
 	"net/http"
 	"time"
+
+	"github.com/Oomat-Dzhumagulov/6SprintFinal/internal/handlers"
 
 	"github.com/go-chi/chi/v5"
 )

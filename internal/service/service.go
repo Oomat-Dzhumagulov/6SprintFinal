@@ -1,7 +1,7 @@
 package service
 
 import (
-	"6sprintFinal/pkg/morse"
+	"github.com/Oomat-Dzhumagulov/6SprintFinal/pkg/morse"
 )
 
 func isMorze(s string) bool {
