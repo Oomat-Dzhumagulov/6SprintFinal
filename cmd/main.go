@@ -1,7 +1,7 @@
 package main
 
 import (
-	"6SprintFinal/internal/server"
+	"6sprintFinal/internal/server"
 	"log"
 	"os"
 )
