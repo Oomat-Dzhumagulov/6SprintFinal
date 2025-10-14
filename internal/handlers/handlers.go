@@ -12,7 +12,7 @@ import (
 )
 
 func MainHandle(w http.ResponseWriter, r *http.Request) {
-	html := "../../index.html"
+	html := "../index.html"
 	http.ServeFile(w, r, html)
 }
 
@@ -23,16 +23,22 @@ func UploadHandle(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	err := r.ParseMultipartForm(5 << 20)
+	if err != nil {
+		http.Error(w, fmt.Sprintf("Ошибка при парсинге формы: %v", err), http.StatusInternalServerError)
+		return
+	}
+
 	file, header, err := r.FormFile("myFile")
 	if err != nil {
-		http.Error(w, "Ошибка при получении формы", http.StatusInternalServerError)
+		http.Error(w, fmt.Sprintf("Ошибка при получении файла: %v", err), http.StatusBadRequest)
 		return
 	}
 	defer file.Close()
 
 	data, err := io.ReadAll(file)
 	if err != nil {
-		http.Error(w, "Ошибка при чтении файла", http.StatusInternalServerError)
+		http.Error(w, fmt.Sprintf("Ошибка при чтении файла: %v", err), http.StatusInternalServerError)
 		return
 	}
 
