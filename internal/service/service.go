@@ -19,8 +19,8 @@ func isMorze(s string) bool {
 func Convert(s string) string {
 	is := isMorze(s)
 	if !is {
-		return morse.ToMorse(s)
+		return morse.ToText(s)
 	}
 
-	return morse.ToText(s)
+	return morse.ToMorse(s)
 }
