@@ -1,7 +1,7 @@
 package handlers
 
 import (
-	"6SprintFinal/internal/service"
+	"6sprintFinal/internal/service"
 	"fmt"
 	"io"
 	"net/http"

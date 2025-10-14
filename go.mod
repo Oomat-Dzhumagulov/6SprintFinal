@@ -1,4 +1,5 @@
-module github.com/Yandex-Practicum/go1fl-sprint6-final
+module 6sprintFinal
 
-go 1.24.0
-require github.com/go-chi/chi/v5 v5.2.3 
+go 1.24.4
+
+require github.com/go-chi/chi/v5 v5.2.3 // indirect

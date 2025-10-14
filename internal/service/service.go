@@ -1,6 +1,8 @@
 package service
 
-import "github.com/Yandex-Practicum/go1fl-sprint6-final/morse"
+import (
+	"6sprintFinal/pkg/morse"
+)
 
 func isMorze(s string) bool {
 	for _, char := range s {

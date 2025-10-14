@@ -1,7 +1,7 @@
 package server
 
 import (
-	"6SprintFinal/internal/handlers"
+	"6sprintFinal/internal/handlers"
 	"log"
 	"net/http"
 	"time"
