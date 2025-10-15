@@ -18,8 +18,14 @@ func MainHandle(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	htmlPath := filepath.Join(cwd, "../index.html")
+	htmlPath := filepath.Join(cwd, "index.html")
 
+	if _, err := os.Stat(htmlPath); err != nil {
+		http.Error(w, "файл не найден", http.StatusNotFound)
+		return
+	}
+
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	http.ServeFile(w, r, htmlPath)
 }
 
