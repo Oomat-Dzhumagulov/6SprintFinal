@@ -18,17 +18,9 @@ func MainHandle(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	html := filepath.Join(cwd, "../index.html")
+	htmlPath := filepath.Join(cwd, "../index.html")
 
-	data, err := os.ReadFile(html)
-	if err != nil {
-		http.Error(w, fmt.Sprintf("Ошибка при чтении файла: %v", err), http.StatusInternalServerError)
-		return
-	}
-
-	w.Header().Set("Content-Type", "text/html; charset=utf-8")
-	w.WriteHeader(http.StatusOK)
-	w.Write(data)
+	http.ServeFile(w, r, htmlPath)
 }
 
 func UploadHandle(w http.ResponseWriter, r *http.Request) {
