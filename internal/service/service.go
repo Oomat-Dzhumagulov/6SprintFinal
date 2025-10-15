@@ -7,7 +7,7 @@ import (
 func isMorze(s string) bool {
 	for _, char := range s {
 		switch char {
-		case '.', ',', ' ', '/':
+		case '.', ',', ' ', '-':
 			continue
 		default:
 			return false
@@ -17,10 +17,8 @@ func isMorze(s string) bool {
 }
 
 func Convert(s string) string {
-	is := isMorze(s)
-	if !is {
+	if isMorze(s) {
 		return morse.ToText(s)
 	}
-
 	return morse.ToMorse(s)
 }

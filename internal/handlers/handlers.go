@@ -12,8 +12,23 @@ import (
 )
 
 func MainHandle(w http.ResponseWriter, r *http.Request) {
-	html := "../index.html"
-	http.ServeFile(w, r, html)
+	cwd, err := os.Getwd()
+	if err != nil {
+		http.Error(w, fmt.Sprintf("Ошибка при получении текущей директории: %v", err), http.StatusInternalServerError)
+		return
+	}
+
+	html := filepath.Join(cwd, "../index.html")
+
+	data, err := os.ReadFile(html)
+	if err != nil {
+		http.Error(w, fmt.Sprintf("Ошибка при чтении файла: %v", err), http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+	w.WriteHeader(http.StatusOK)
+	w.Write(data)
 }
 
 func UploadHandle(w http.ResponseWriter, r *http.Request) {
